@@ -1,19 +1,32 @@
 #ifndef Locuinta_H
 #define Locuinta_H
 
+#include <iostream>
 #include <string>
 
 class Locuinta
 {
 public:
     Locuinta();
+    Locuinta(std::string, int, double);
     Locuinta(const Locuinta&);
-    ~Locuinta();
-    virtual void CalculChirie(int, int) = 0;
+    // ~Locuinta();
+
+    Locuinta& operator=(Locuinta&);
+    
+    // friend std::istream& operator>>(std::istream&, Locuinta&);
+    // friend std::ostream& operator<<(std::ostream&, const Locuinta&);
+
+    virtual double CalculChirie(int, int) = 0;
+    virtual void CitireLocuinta() = 0;
+    virtual void AfisareLocuinta() = 0;
 protected:
-    int chirie, discount, suprafataUtila, nrCamere;
-    std::string strada, numar, oras, judet, tara; 
-    // am ales declararea numarului stradal ca string pentru cazurile precum 22A
+    std::string numeClient;
+    int suprafataUtila;
+    double discount;
 };
+
+// std::istream& operator>>(std::istream&, Locuinta&);
+// std::ostream& operator<<(std::ostream&, const Locuinta&);
 
 #endif

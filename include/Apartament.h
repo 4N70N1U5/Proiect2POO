@@ -7,12 +7,23 @@ class Apartament: public Locuinta
 {
 public:
     Apartament();
+    Apartament(std::string, int, double, int);
     Apartament(const Apartament&);
-    ~Apartament();
-    void CalculChirie(int, int);
+    // ~Apartament();
+
+    Apartament operator=(Apartament);
+
+    // friend std::istream operator>>(std::istream&, Apartament&);
+    // friend std::ostream operator<<(std::ostream&, const Apartament&);
+
+    double CalculChirie(int, int);
+    void CitireLocuinta();
+    void AfisareLocuinta();
 private:
-    int numarBloc, etaj;
-    std::string scaraBloc;
+    int etaj;
 };
+
+// std::istream operator>>(std::istream&, Apartament&);
+// std::ostream operator<<(std::ostream&, const Apartament&);
 
 #endif

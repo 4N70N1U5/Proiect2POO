@@ -7,5 +7,7 @@
 
 int main()
 {
-    
+    AgentieImobiliara AI;
+
+    return 0;
 }
