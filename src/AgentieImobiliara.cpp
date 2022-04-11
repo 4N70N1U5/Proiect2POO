@@ -23,6 +23,11 @@ AgentieImobiliara::AgentieImobiliara(const AgentieImobiliara& AI)
     this->locuinte = AI.locuinte;
 }
 
+// AgentieImobiliara::~AgentieImobiliara()
+// {
+
+// }
+
 AgentieImobiliara AgentieImobiliara::operator=(AgentieImobiliara AI)
 {
     this->locuinte = AI.locuinte;

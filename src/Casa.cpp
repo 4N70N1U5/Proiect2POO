@@ -21,7 +21,7 @@ Casa::Casa(const Casa& C): Locuinta(C)
 
 // Casa::~Casa()
 // {
-//     delete this;
+//     
 // }
 
 Casa Casa::operator=(Casa C)

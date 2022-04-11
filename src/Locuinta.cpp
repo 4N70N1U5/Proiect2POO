@@ -26,7 +26,7 @@ Locuinta::Locuinta(const Locuinta& L)
 
 // Locuinta::~Locuinta()
 // {
-//     delete this;
+//     
 // }
 
 Locuinta& Locuinta::operator=(Locuinta& L)

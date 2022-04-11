@@ -21,7 +21,7 @@ Apartament::Apartament(const Apartament& A): Locuinta(A)
 
 // Apartament::~Apartament()
 // {
-//     delete this;
+//     
 // }
 
 Apartament Apartament::operator=(Apartament A)
