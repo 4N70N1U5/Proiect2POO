@@ -77,7 +77,7 @@ int main()
             }
             else if (input == "0")
             {
-                std::cout << "Ati ales 0.\nProgramul se inchide.\n";
+                std::cout << "Ai ales 0.\nProgramul se va inchide.\n";
                 exit = true;
             }
             else
@@ -92,6 +92,8 @@ int main()
 
         std::this_thread::sleep_for(std::chrono::milliseconds(2048));
     }
+
+    Clear();
 
     return 0;
 }

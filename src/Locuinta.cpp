@@ -24,10 +24,10 @@ Locuinta::Locuinta(const Locuinta& L)
     this->discount = L.discount;
 }
 
-// Locuinta::~Locuinta()
-// {
-//     
-// }
+Locuinta::~Locuinta()
+{
+    
+}
 
 Locuinta& Locuinta::operator=(Locuinta& L)
 {
@@ -38,20 +38,23 @@ Locuinta& Locuinta::operator=(Locuinta& L)
     return *this;
 }
 
-// std::istream& operator>>(std::istream& i, Locuinta& L)
-// {
-//     i >> L.numeClient;
-//     i >> L.suprafataUtila;
-//     i >> L.discount;
+std::istream& operator>>(std::istream& i, Locuinta& L)
+{
+    std::cout << "Numele clientului: ";
+    std::getline(i, L.numeClient);
+    std::cout << "Discountul aplicat: ";
+    i >> L.discount;
+    std::cout << "Suprafata utila: ";
+    i >> L.suprafataUtila;
 
-//     return i;
-// }
+    return i;
+}
 
-// std::ostream& operator<<(std::ostream& o, const Locuinta& L)
-// {
-//     o << L.numeClient << '\n';
-//     o << L.suprafataUtila << '\n';
-//     o << L.discount << '\n';
+std::ostream& operator<<(std::ostream& o, const Locuinta& L)
+{
+    o << "Numele clientului: " << L.numeClient << "\n";
+    o << "Discountul aplicat: " << L.discount << "\n";
+    o << "Suprafata utila: " << L.suprafataUtila << "\n";
 
-//     return o;
-// }
+    return o;
+}

@@ -19,10 +19,10 @@ Apartament::Apartament(const Apartament& A): Locuinta(A)
     this->etaj = A.etaj;
 }
 
-// Apartament::~Apartament()
-// {
-//     
-// }
+Apartament::~Apartament()
+{
+    
+}
 
 Apartament Apartament::operator=(Apartament A)
 {
@@ -34,42 +34,64 @@ Apartament Apartament::operator=(Apartament A)
     return *this;
 }
 
+std::istream& operator>>(std::istream& i, Apartament& A)
+{
+    Locuinta& L = A;
+
+    i >> L;
+
+    std::cout << "Etajul: ";
+    i >> A.etaj;
+
+    return i;
+}
+
+std::ostream& operator<<(std::ostream& o, const Apartament& A)
+{
+    const Locuinta& L = A;
+
+    o << L;
+
+    o <<  "Etajul: " << A.etaj << "\n";
+
+    return o;
+}
+
 double Apartament::CalculChirie(int X, int Y)
 {
     return X * suprafataUtila * (1 - Y * discount / 100.0);
 }
 
-void Apartament::CitireLocuinta()
-{
-    using namespace std;
-    {
-        cout << "CITIRE APARTAMENT\n\n";
+// void Apartament::CitireLocuinta()
+// {
+//     using namespace std;
+//     {
+//         cout << "CITIRE APARTAMENT\n\n";
 
-        cout << "Numele clientului: ";
-        getline(cin, this->numeClient);
-        cout << "Discountul aplicat: ";
-        cin >> this->discount;
-        cout << "Suprafata utila: ";
-        cin >> this->suprafataUtila;
-        cout << "Etajul: ";
-        cin >> this->etaj;
+//         cout << "Numele clientului: ";
+//         getline(cin, this->numeClient);
+//         cout << "Discountul aplicat: ";
+//         cin >> this->discount;
+//         cout << "Suprafata utila: ";
+//         cin >> this->suprafataUtila;
+//         cout << "Etajul: ";
+//         cin >> this->etaj;
 
-        cout << "\n";
-    } // namespace std
-}
+//         cout << "\n";
+//     } // namespace std
+// }
 
-void Apartament::AfisareLocuinta()
-{
-    using namespace std;
-    {
-        cout << "AFISARE APARTAMENT\n\n";
+// void Apartament::AfisareLocuinta()
+// {
+//     using namespace std;
+//     {
+//         cout << "AFISARE APARTAMENT\n\n";
 
-        cout << "Numele clientului: " << this->numeClient << "\n";
-        cout << "Discountul aplicat: " << this->discount << "\n";
-        cout << "Suprafata utila: " << this->suprafataUtila << "\n";
-        cout << "Etajul: " << this->etaj << "\n";
+//         cout << "Numele clientului: " << this->numeClient << "\n";
+//         cout << "Discountul aplicat: " << this->discount << "\n";
+//         cout << "Suprafata utila: " << this->suprafataUtila << "\n";
+//         cout << "Etajul: " << this->etaj << "\n";
 
-        cout << "\n";
-    } // namespace std
-    
-}
+//         cout << "\n";
+//     } // namespace std
+// }

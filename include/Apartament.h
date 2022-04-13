@@ -9,21 +9,21 @@ public:
     Apartament();
     Apartament(std::string, int, double, int);
     Apartament(const Apartament&);
-    // ~Apartament();
+    ~Apartament();
 
     Apartament operator=(Apartament);
 
-    // friend std::istream operator>>(std::istream&, Apartament&);
-    // friend std::ostream operator<<(std::ostream&, const Apartament&);
+    friend std::istream& operator>>(std::istream&, Apartament&);
+    friend std::ostream& operator<<(std::ostream&, const Apartament&);
 
     double CalculChirie(int, int);
-    void CitireLocuinta();
-    void AfisareLocuinta();
+    // void CitireLocuinta();
+    // void AfisareLocuinta();
 private:
     int etaj;
 };
 
-// std::istream operator>>(std::istream&, Apartament&);
-// std::ostream operator<<(std::ostream&, const Apartament&);
+std::istream& operator>>(std::istream&, Apartament&);
+std::ostream& operator<<(std::ostream&, const Apartament&);
 
 #endif
