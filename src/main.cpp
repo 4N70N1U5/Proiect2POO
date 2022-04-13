@@ -4,75 +4,93 @@
 #include "../include/Casa.h"
 
 #include <iostream>
+#include <vector>
+#include <chrono>
+#include <thread>
 
 void AfisareOptiuni()
-{
-    std::cout << std::string(4, '\n');
-        
-    std::cout << "Va rog alegeti o optiune: \n";
+{        
+    std::cout << "Te rog alege o optiune: \n";
     
-    std::cout << "Introduceti o noua locuinta: Optiunea 1\n";
-    std::cout << "Stergeti o locuinta: Optiunea 2\n";
-    std::cout << "Afisati locuintele inregistrate: Optiunea 3\n";
-    std::cout << "Calculati si afisati chiria pentru o locuinta: Optiunea 4\n";
-    std::cout << "Opriti programul: Optiunea 5\n";
+    
     
     std::cout << "Optiunea aleasa: ";
 }
+
+void Clear()
+{
+    #if defined _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+} // Multumim, Stack Overflow
 
 int main()
 {
     bool exit = false;
     std::string input;
     
+    // std::vector<Apartament> A;
+    // std::vector<Casa> C;
+    // std::vector<AgentieImobiliara> AI;
+
     AgentieImobiliara AI;
 
     while (exit == false)
     {
-        Intoarcere:
+        SkipSleep:
+        Clear();
         AfisareOptiuni();
 
-        std::cin >> input;
-        
         try
         {
-            // switch (input)
-            // {
-            // case 1:
-            //     std::cout << "Ati ales 1\n";
-            //     break;
+            std::cin >> input;
+            std::cin.get();
 
-            // case 2:
-            //     std::cout << "Ati ales 2\n";
-            //     break;
-
-            // case 3:
-            //     std::cout << "Ati ales 3\n";
-            //     break;
-
-            // case 4:
-            //     std::cout << "Ati ales 4\n";
-            //     break;
-
-            // case 5:
-            //     std::cout << "Programul se inchide.\n";
-            //     exit = true;
-            //     break;
-
-            // case 0:
-            //     goto Intoarcere;
-            //     break;
-
-            // default:
-            //     throw std::invalid_argument(std::string("Input invalid! Incercati din nou!"));
-            //     break;
-            // }
+            if (input == "1")
+            {
+                // std::cout << "Ati ales 1.\n";
+                std::cin >> AI;
+            }
+            else if (input == "2")
+            {
+                // std::cout << "Ati ales 2.\n";
+                std::cout << AI;
+                std::cout << "Apasa enter pentru a continua.\n";
+                std::cin.get();
+                goto SkipSleep;
+            }
+            else if (input == "3")
+            {
+                AI.AfisareApartamente();
+                std::cout << "Apasa enter pentru a continua.\n";
+                std::cin.get();
+                goto SkipSleep;
+            }
+            else if (input == "4")
+            {
+                AI.AfisareCase();
+                std::cout << "Apasa enter pentru a continua.\n";
+                std::cin.get();
+                goto SkipSleep;
+            }
+            else if (input == "0")
+            {
+                std::cout << "Ati ales 0.\nProgramul se inchide.\n";
+                exit = true;
+            }
+            else
+            {
+                throw "Te rog incearca din nou!\n";
+            }
         }
-        catch (std::invalid_argument& e)
+        catch (const char* err)
         {
-            std::cerr << e.what();
-            goto Intoarcere;
+            std::cout << err;
         }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(2048));
     }
 
     return 0;

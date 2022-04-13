@@ -23,10 +23,10 @@ AgentieImobiliara::AgentieImobiliara(const AgentieImobiliara& AI)
     this->locuinte = AI.locuinte;
 }
 
-// AgentieImobiliara::~AgentieImobiliara()
-// {
-
-// }
+AgentieImobiliara::~AgentieImobiliara()
+{
+    
+}
 
 AgentieImobiliara AgentieImobiliara::operator=(AgentieImobiliara AI)
 {
@@ -75,4 +75,28 @@ std::ostream& operator<<(std::ostream& o, const AgentieImobiliara& AI)
     }
 
     return o;
+}
+
+void AgentieImobiliara::AfisareApartamente()
+{
+    for (int i = 0; i < this->locuinte.size(); i++)
+    {
+        Apartament* A = dynamic_cast<Apartament*>(this->locuinte[i]);
+        if (A != NULL)
+        {
+            A->AfisareLocuinta();
+        }
+    }
+}
+
+void AgentieImobiliara::AfisareCase()
+{
+    for (int i = 0; i < this->locuinte.size(); i++)
+    {
+        Casa* C = dynamic_cast<Casa*>(this->locuinte[i]);
+        if (C != NULL)
+        {
+            C->AfisareLocuinta();
+        }
+    }
 }

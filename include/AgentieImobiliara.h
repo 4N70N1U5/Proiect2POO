@@ -12,12 +12,15 @@ public:
     AgentieImobiliara();
     AgentieImobiliara(std::vector<Locuinta*>);
     AgentieImobiliara(const AgentieImobiliara&);
-    // ~AgentieImobiliara();
+    ~AgentieImobiliara();
 
     AgentieImobiliara operator=(AgentieImobiliara);
 
     friend std::istream& operator>>(std::istream&, AgentieImobiliara&);
     friend std::ostream& operator<<(std::ostream&, const AgentieImobiliara&);
+
+    void AfisareApartamente();
+    void AfisareCase();
 private:
     std::vector<Locuinta*> locuinte;
 };
