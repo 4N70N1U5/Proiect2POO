@@ -17,8 +17,6 @@ public:
     friend std::ostream& operator<<(std::ostream&, const Casa&);
 
     double CalculChirie(int, int);
-    // void CitireLocuinta();
-    // void AfisareLocuinta();
 private:
     int suprafataCurte;
 };

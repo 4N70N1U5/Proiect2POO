@@ -50,12 +50,12 @@ int main()
 
             if (input == "1")
             {
-                // std::cout << "Ati ales 1.\n";
+                std::cout << "Ai ales 1.\n";
                 std::cin >> AI;
             }
             else if (input == "2")
             {
-                // std::cout << "Ati ales 2.\n";
+                std::cout << "Ai ales 2.\n";
                 std::cout << AI;
                 std::cout << "Apasa enter pentru a continua.\n";
                 std::cin.get();
@@ -63,6 +63,7 @@ int main()
             }
             else if (input == "3")
             {
+                std::cout << "Ai ales 3.\n";
                 AI.AfisareApartamente();
                 std::cout << "Apasa enter pentru a continua.\n";
                 std::cin.get();
@@ -70,6 +71,7 @@ int main()
             }
             else if (input == "4")
             {
+                std::cout << "Ai ales 4.\n";
                 AI.AfisareCase();
                 std::cout << "Apasa enter pentru a continua.\n";
                 std::cin.get();
