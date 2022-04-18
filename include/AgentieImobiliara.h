@@ -21,6 +21,8 @@ public:
 
     void AfisareApartamente();
     void AfisareCase();
+    void ModificareLocuinta();
+    void CalculChirie();
 private:
     std::vector<Locuinta*> locuinte;
 };

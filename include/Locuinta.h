@@ -12,15 +12,16 @@ public:
     Locuinta(const Locuinta&);
     ~Locuinta();
 
+    static void setValStandard();
+
     Locuinta& operator=(Locuinta&);
     
     friend std::istream& operator>>(std::istream&, Locuinta&);
     friend std::ostream& operator<<(std::ostream&, const Locuinta&);
 
-    virtual double CalculChirie(int, int) = 0;
-    // virtual void CitireLocuinta() = 0;
-    // virtual void AfisareLocuinta() = 0;
+    virtual double CalculChirie(int) = 0;
 protected:
+    static int valoareStandard;
     std::string numeClient;
     int suprafataUtila;
     double discount;

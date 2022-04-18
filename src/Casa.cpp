@@ -57,7 +57,7 @@ std::ostream& operator<<(std::ostream& o, const Casa& C)
     return o;
 }
 
-double Casa::CalculChirie(int X, int Y)
+double Casa::CalculChirie(int aplicareDiscount)
 {
-    return X * (suprafataUtila + 0.2 * suprafataCurte) * (1 - Y * discount / 100.0);
+    return valoareStandard * (suprafataUtila + 0.2 * suprafataCurte) * (1 - aplicareDiscount * discount / 100.0);
 }

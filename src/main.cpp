@@ -12,7 +12,13 @@ void AfisareOptiuni()
 {        
     std::cout << "Te rog alege o optiune: \n";
     
-    
+    std::cout << "Optiunea 1: Adauga o locuinta.\n";
+    std::cout << "Optiunea 2: Afiseaza locuintele.\n";
+    std::cout << "Optiunea 3: Afiseaza apartamentele.\n";
+    std::cout << "Optiunea 4: Afiseaza casele.\n";
+    std::cout << "Optiunea 5: Modifica o locuinta.\n";
+    std::cout << "Optiunea 6: Calculeaza si afiseaza chiria pentru o locuinta.\n";
+    std::cout << "Optiunea 0: Inchide programul.\n";
     
     std::cout << "Optiunea aleasa: ";
 }
@@ -28,12 +34,11 @@ void Clear()
 
 int main()
 {
+    Clear();
+    Locuinta::setValStandard();
+
     bool exit = false;
     std::string input;
-    
-    // std::vector<Apartament> A;
-    // std::vector<Casa> C;
-    // std::vector<AgentieImobiliara> AI;
 
     AgentieImobiliara AI;
 
@@ -77,6 +82,16 @@ int main()
                 std::cin.get();
                 goto SkipSleep;
             }
+            else if (input == "5")
+            {
+                std::cout << "Ai ales 5.\n";
+                AI.ModificareLocuinta();
+            }
+            else if (input == "6")
+            {
+                std::cout << "Ai ales 6.\n";
+                AI.CalculChirie();
+            }
             else if (input == "0")
             {
                 std::cout << "Ai ales 0.\nProgramul se va inchide.\n";
@@ -84,7 +99,7 @@ int main()
             }
             else
             {
-                throw "Te rog incearca din nou!\n";
+                throw "Optiune invalida. Te rog incearca din nou!\n";
             }
         }
         catch (const char* err)

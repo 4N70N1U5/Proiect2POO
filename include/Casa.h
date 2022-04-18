@@ -16,7 +16,7 @@ public:
     friend std::istream& operator>>(std::istream&, Casa&);
     friend std::ostream& operator<<(std::ostream&, const Casa&);
 
-    double CalculChirie(int, int);
+    double CalculChirie(int);
 private:
     int suprafataCurte;
 };

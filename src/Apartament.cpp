@@ -57,7 +57,7 @@ std::ostream& operator<<(std::ostream& o, const Apartament& A)
     return o;
 }
 
-double Apartament::CalculChirie(int X, int Y)
+double Apartament::CalculChirie(int aplicareDiscount)
 {
-    return X * suprafataUtila * (1 - Y * discount / 100.0);
+    return valoareStandard * suprafataUtila * (1 - aplicareDiscount * discount / 100.0);
 }

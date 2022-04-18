@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+int Locuinta::valoareStandard;
+
 Locuinta::Locuinta()
 {
     this->numeClient = "";
@@ -27,6 +29,13 @@ Locuinta::Locuinta(const Locuinta& L)
 Locuinta::~Locuinta()
 {
     
+}
+
+void Locuinta::setValStandard()
+{
+    std::cout << "Te rog introdu o suma pentru valoarea standard a chiriei / metru patrat: ";
+    std::cin >> valoareStandard;
+    std::cin.get();
 }
 
 Locuinta& Locuinta::operator=(Locuinta& L)

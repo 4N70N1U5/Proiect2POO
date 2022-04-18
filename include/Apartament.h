@@ -16,7 +16,7 @@ public:
     friend std::istream& operator>>(std::istream&, Apartament&);
     friend std::ostream& operator<<(std::ostream&, const Apartament&);
 
-    double CalculChirie(int, int);
+    double CalculChirie(int);
 private:
     int etaj;
 };
