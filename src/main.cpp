@@ -10,7 +10,7 @@
 
 void AfisareOptiuni()
 {        
-    std::cout << "Te rog alege o optiune: \n";
+    std::cout << "Te rog alege o optiune:\n";
     
     std::cout << "Optiunea 1: Adauga o locuinta.\n";
     std::cout << "Optiunea 2: Afiseaza locuintele.\n";
@@ -55,46 +55,64 @@ int main()
 
             if (input == "1")
             {
-                std::cout << "Ai ales 1.\n";
+                Clear();
+                std::cout << "Ai ales 1: Adauga o locuinta.\n\n";
+                
                 std::cin >> AI;
             }
             else if (input == "2")
             {
-                std::cout << "Ai ales 2.\n";
+                Clear();
+                std::cout << "Ai ales 2: Afiseaza locuintele.\n\n";
+                
                 std::cout << AI;
+                
                 std::cout << "Apasa enter pentru a continua.\n";
                 std::cin.get();
                 goto SkipSleep;
             }
             else if (input == "3")
             {
-                std::cout << "Ai ales 3.\n";
+                Clear();
+                std::cout << "Ai ales 3: Afiseaza apartamentele.\n\n";
+                
                 AI.AfisareApartamente();
+                
                 std::cout << "Apasa enter pentru a continua.\n";
                 std::cin.get();
                 goto SkipSleep;
             }
             else if (input == "4")
             {
-                std::cout << "Ai ales 4.\n";
+                Clear();
+                std::cout << "Ai ales 4: Afiseaza casele.\n\n";
+                
                 AI.AfisareCase();
+                
                 std::cout << "Apasa enter pentru a continua.\n";
                 std::cin.get();
                 goto SkipSleep;
             }
             else if (input == "5")
             {
-                std::cout << "Ai ales 5.\n";
+                Clear();
+                std::cout << "Ai ales 5: Modifica o locuinta.\n\n";
+                
                 AI.ModificareLocuinta();
             }
             else if (input == "6")
             {
-                std::cout << "Ai ales 6.\n";
+                Clear();
+                std::cout << "Ai ales 6: Calculeaza si afiseaza chiria pentru o locuinta.\n\n";
+                
                 AI.CalculChirie();
             }
             else if (input == "0")
             {
-                std::cout << "Ai ales 0.\nProgramul se va inchide.\n";
+                Clear();
+                std::cout << "Ai ales 0: Inchide programul.\n\n";
+                std::cout << "Programul se va inchide.\n";
+                
                 exit = true;
             }
             else

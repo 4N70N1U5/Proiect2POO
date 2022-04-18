@@ -11,7 +11,10 @@
 
 AgentieImobiliara::AgentieImobiliara()
 {
-
+    this->locuinte.push_back(new Apartament("Mirel", 100, 10, 1));
+    this->locuinte.push_back(new Apartament("Mitica", 70, 5, 3));
+    this->locuinte.push_back(new Casa("Georgel", 300, 10, 200));
+    this->locuinte.push_back(new Casa("Marian", 350, 15, 150));
 }
 
 AgentieImobiliara::AgentieImobiliara(std::vector<Locuinta*> locuinte)
@@ -26,7 +29,7 @@ AgentieImobiliara::AgentieImobiliara(const AgentieImobiliara& AI)
 
 AgentieImobiliara::~AgentieImobiliara()
 {
-    
+    this->locuinte.clear();
 }
 
 AgentieImobiliara AgentieImobiliara::operator=(AgentieImobiliara AI)
@@ -45,17 +48,19 @@ std::istream& operator>>(std::istream& i, AgentieImobiliara& AI)
         cout << "Tip locuinta (Apartament sau Casa): ";
         getline(i, tip);
         transform(tip.begin(), tip.end(), tip.begin(), ::tolower);
+
+        cout << '\n';
         
         if (tip == "apartament")
         {
-            cout << "A fost selectat apartament.\n";
+            cout << "A fost selectat apartament.\n\n";
             Apartament* A = new Apartament();
             i >> *A;
             AI.locuinte.push_back(A);
         }
         else if (tip == "casa")
         {
-            cout << "A fost selectata casa.\n";
+            cout << "A fost selectata casa.\n\n";
             Casa* C = new Casa();
             i >> *C;
             AI.locuinte.push_back(C);
@@ -72,7 +77,6 @@ std::istream& operator>>(std::istream& i, AgentieImobiliara& AI)
 
 std::ostream& operator<<(std::ostream& o, const AgentieImobiliara& AI)
 {
-    o << '\n';
     for (int i = 0; i < AI.locuinte.size(); i++)
     {
         o << "Locuinta " << i + 1 << ":\n";
@@ -95,8 +99,6 @@ void AgentieImobiliara::AfisareApartamente()
 {
     int indice = 1;
 
-    std::cout << '\n';
-
     for (int i = 0; i < this->locuinte.size(); i++)
     {
         Apartament* A = dynamic_cast<Apartament*>(this->locuinte[i]);
@@ -113,8 +115,6 @@ void AgentieImobiliara::AfisareCase()
 {
     int indice = 1;
 
-    std::cout << '\n';
-
     for (int i = 0; i < this->locuinte.size(); i++)
     {
         Casa* C = dynamic_cast<Casa*>(this->locuinte[i]);
@@ -130,13 +130,15 @@ void AgentieImobiliara::AfisareCase()
 void AgentieImobiliara::ModificareLocuinta()
 {
     std::cout << *this;
-    std::cout << "\nAlege o locuinta pe care sa o modifici: ";
+    std::cout << "Alege locuinta pe care vrei sa o modifici: ";
 
     int i;
 
     std::cin >> i;
 
     i--;
+
+    std::cout << '\n';
 
     try
     {
@@ -145,7 +147,7 @@ void AgentieImobiliara::ModificareLocuinta()
 
         if (dynamic_cast<Apartament*>(this->locuinte[i]))
         {
-            std::cout << "Modifici apartamentul de pe pozitia " << i + 1 << ".\n";
+            std::cout << "Modifici apartamentul de pe pozitia " << i + 1 << ".\n\n";
 
             std::cin.get();
 
@@ -158,7 +160,7 @@ void AgentieImobiliara::ModificareLocuinta()
         }
         else if (dynamic_cast<Casa*>(this->locuinte[i]))
         {
-            std::cout << "Modifici casa de pe pozitia " << i + 1 << ".\n";
+            std::cout << "Modifici casa de pe pozitia " << i + 1 << ".\n\n";
 
             std::cin.get();
 
@@ -170,11 +172,12 @@ void AgentieImobiliara::ModificareLocuinta()
             *aux = C;
         }
 
+        std::cout << '\n';
+
         std::cout << "Locuinta a fost modificata.\n";
     }
     catch(const std::out_of_range& err)
-    {
-        
+    { 
         std::cout << "Locuinta aleasa nu exista. Incearca din nou!\n";
     }
 }
@@ -182,7 +185,7 @@ void AgentieImobiliara::ModificareLocuinta()
 void AgentieImobiliara::CalculChirie()
 {
     std::cout << *this;
-    std::cout << "\nAlege locuinta pentru care vrei sa calculezi chiria: ";
+    std::cout << "Alege locuinta pentru care vrei sa calculezi chiria: ";
 
     int i, aplicareDiscount;
 
@@ -190,6 +193,8 @@ void AgentieImobiliara::CalculChirie()
     std::cin.get();
 
     i--;
+
+    std::cout << '\n';
 
     CitireDiscount:
     std::cout << "Doresti sa aplici discountul? (DA / NU)\n";
@@ -200,11 +205,13 @@ void AgentieImobiliara::CalculChirie()
 
     std::transform(raspuns.begin(), raspuns.end(), raspuns.begin(), ::tolower);
 
-    if (raspuns == "da")
+    std::cout << '\n';
+
+    if (raspuns == "da" || raspuns == "d")
     {
         aplicareDiscount = 1;
     }
-    else if (raspuns == "nu")
+    else if (raspuns == "nu" || raspuns == "n")
     {
         aplicareDiscount = 0;
     }
@@ -220,24 +227,19 @@ void AgentieImobiliara::CalculChirie()
 
         if (dynamic_cast<Apartament*>(this->locuinte[i]))
         {
-            std::cout << "Chiria pentru apartamentul de pe pozitia " << i + 1 << ": ";
-
             Apartament* A = dynamic_cast<Apartament*>(this->locuinte[i]);
 
-            std::cout << A->CalculChirie(aplicareDiscount);
+            std::cout << "Chiria pentru apartamentul de pe pozitia " << i + 1 << ": " << A->CalculChirie(aplicareDiscount) << '\n';
         }
         else if (dynamic_cast<Casa*>(this->locuinte[i]))
         {
-            std::cout << "Chiria pentru casa de pe pozitia " << i + 1 << ": ";
-
             Casa* C = dynamic_cast<Casa*>(this->locuinte[i]);
-
-            std::cout << C->CalculChirie(aplicareDiscount);
+            
+            std::cout << "Chiria pentru casa de pe pozitia " << i + 1 << ": " << C->CalculChirie(aplicareDiscount) << '\n';
         }
     }
     catch(const std::out_of_range& err)
     {
-        
         std::cout << "Locuinta aleasa nu exista. Incearca din nou!\n";
     }
 }
