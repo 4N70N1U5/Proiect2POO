@@ -6,6 +6,8 @@ Clasa ```Locuinta``` este clasa de baza din care sunt derivate clasele ```Aparta
 
 Clasa ```AgentieImobiliara``` permite memorarea acestor locuinte intr-un vector de pointeri catre clasa de baza. Aceasta contine metode pentru a adauga noi locuinte (cu operatorul ```>>```), pentru a afisa toate locuintele (cu operatorul ```<<```) sau doar pe cele de un anume tip, pentru a modifica locuintele din agentie, pentru a le sterge si pentru a calcula chiria in functie de valoarea standard a chiriei, suprafata si daca se aplica sau nu discountul.
 
-Toate aceste optiuni pot fi accesate cu ajutorul unui meniu interactiv.
+Mai intai, programul afiseaza o serie de Apartamente, Case si Agentii Imobiliare care au fost create folosind constructori si operatori pe care nu ii folosisem nicaieri in programul efectiv, pentru a demonstra ca acestia intr-adevar functioneaza.
 
-Fisiere sursa ```.cpp```, inclusiv ```main.cpp```, se gasesc in folderul ```src```, in timp ce fisierele header ```.h``` se afla in folderul ```include```.
+Apoi, toate aceste optiuni pot fi accesate cu ajutorul unui meniu interactiv.
+
+Fisierele sursa ```.cpp```, inclusiv ```main.cpp```, se gasesc in folderul ```src```, in timp ce fisierele header ```.h``` se afla in folderul ```include```.
