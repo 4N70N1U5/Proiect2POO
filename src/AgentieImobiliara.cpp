@@ -11,6 +11,9 @@
 
 AgentieImobiliara::AgentieImobiliara()
 {
+    // Initial am adaugat cateva locuinte in agentia imobiliara folosind constructorul pentru
+    // a-mi fi mai usor sa testez, dar am decis sa le pastrez si in varianta finala.
+    // De aceea, exista deja aceste patru locuinte in agentie inca de la inceput.
     this->locuinte.push_back(new Apartament("Carmen", 90, 10, 1));
     this->locuinte.push_back(new Apartament("Daniel", 70, 5, 3));
     this->locuinte.push_back(new Casa("Sebi", 300, 10, 150));
