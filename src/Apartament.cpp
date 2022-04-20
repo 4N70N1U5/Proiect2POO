@@ -24,14 +24,12 @@ Apartament::~Apartament()
     
 }
 
-Apartament Apartament::operator=(Apartament A)
+void Apartament::operator=(const Apartament& A)
 {
-    Locuinta& L = A;
+    const Locuinta& L = A;
     this->Locuinta::operator=(L);
 
     this->etaj = A.etaj;
-
-    return *this;
 }
 
 std::istream& operator>>(std::istream& i, Apartament& A)

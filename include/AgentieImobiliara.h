@@ -14,7 +14,7 @@ public:
     AgentieImobiliara(const AgentieImobiliara&);
     ~AgentieImobiliara();
 
-    AgentieImobiliara operator=(AgentieImobiliara);
+    void operator=(const AgentieImobiliara&);
 
     friend std::istream& operator>>(std::istream&, AgentieImobiliara&);
     friend std::ostream& operator<<(std::ostream&, const AgentieImobiliara&);
@@ -22,6 +22,7 @@ public:
     void AfisareApartamente();
     void AfisareCase();
     void ModificareLocuinta();
+    void StergereLocuinta();
     void CalculChirie();
 private:
     std::vector<Locuinta*> locuinte;

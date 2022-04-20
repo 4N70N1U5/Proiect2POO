@@ -11,10 +11,10 @@
 
 AgentieImobiliara::AgentieImobiliara()
 {
-    this->locuinte.push_back(new Apartament("Mirel", 100, 10, 1));
-    this->locuinte.push_back(new Apartament("Mitica", 70, 5, 3));
-    this->locuinte.push_back(new Casa("Georgel", 300, 10, 200));
-    this->locuinte.push_back(new Casa("Marian", 350, 15, 150));
+    this->locuinte.push_back(new Apartament("Carmen", 90, 10, 1));
+    this->locuinte.push_back(new Apartament("Daniel", 70, 5, 3));
+    this->locuinte.push_back(new Casa("Sebi", 300, 10, 150));
+    this->locuinte.push_back(new Casa("Lidia", 350, 15, 200));
 }
 
 AgentieImobiliara::AgentieImobiliara(std::vector<Locuinta*> locuinte)
@@ -32,10 +32,9 @@ AgentieImobiliara::~AgentieImobiliara()
     this->locuinte.clear();
 }
 
-AgentieImobiliara AgentieImobiliara::operator=(AgentieImobiliara AI)
+void AgentieImobiliara::operator=(const AgentieImobiliara& AI)
 {
     this->locuinte = AI.locuinte;
-    return *this;
 }
 
 std::istream& operator>>(std::istream& i, AgentieImobiliara& AI)
@@ -70,6 +69,10 @@ std::istream& operator>>(std::istream& i, AgentieImobiliara& AI)
             cout << "Va rog repetati selectia.\n";
             goto CitireTip;
         }
+
+        cout << '\n';
+
+        cout << "Locuinta a fost adaugata.\n";
     } // namespace std
     
     return i;
@@ -135,8 +138,9 @@ void AgentieImobiliara::ModificareLocuinta()
     int i;
 
     std::cin >> i;
+    std::cin.get();
 
-    i--;
+    i--; // Pentru ca locuintele sunt afisate cu index incepand de la 1, dar in vector incep de la 0.
 
     std::cout << '\n';
 
@@ -149,8 +153,6 @@ void AgentieImobiliara::ModificareLocuinta()
         {
             std::cout << "Modifici apartamentul de pe pozitia " << i + 1 << ".\n\n";
 
-            std::cin.get();
-
             Apartament A;
             std::cin >> A;
 
@@ -161,8 +163,6 @@ void AgentieImobiliara::ModificareLocuinta()
         else if (dynamic_cast<Casa*>(this->locuinte[i]))
         {
             std::cout << "Modifici casa de pe pozitia " << i + 1 << ".\n\n";
-
-            std::cin.get();
 
             Casa C;
             std::cin >> C;
@@ -182,6 +182,32 @@ void AgentieImobiliara::ModificareLocuinta()
     }
 }
 
+void AgentieImobiliara::StergereLocuinta()
+{
+    std::cout << *this;
+    std::cout << "Alege locuinta pe care vrei sa o stergi: ";
+
+    int i;
+    std::cin >> i;
+    std::cin.get();
+
+    i--;
+    
+    std::cout << '\n';
+
+    try
+    {
+        this->locuinte.at(i);
+        this->locuinte.erase(this->locuinte.begin() + i);
+
+        std::cout << "Locuinta a fost stearsa.\n";
+    }
+    catch(const std::out_of_range& err)
+    {
+        std::cout << "Locuinta aleasa nu exista. Incearca din nou!\n";
+    }
+}
+
 void AgentieImobiliara::CalculChirie()
 {
     std::cout << *this;
@@ -195,6 +221,16 @@ void AgentieImobiliara::CalculChirie()
     i--;
 
     std::cout << '\n';
+
+    try
+    {
+        this->locuinte.at(i);
+    }
+    catch(const std::out_of_range& err)
+    {
+        std::cout << "Locuinta aleasa nu exista. Incearca din nou!\n";
+        return;
+    }
 
     CitireDiscount:
     std::cout << "Doresti sa aplici discountul? (DA / NU)\n";
@@ -221,25 +257,16 @@ void AgentieImobiliara::CalculChirie()
         goto CitireDiscount;
     }
 
-    try
+    if (dynamic_cast<Apartament*>(this->locuinte[i]))
     {
-        this->locuinte.at(i);
+        Apartament* A = dynamic_cast<Apartament*>(this->locuinte[i]);
 
-        if (dynamic_cast<Apartament*>(this->locuinte[i]))
-        {
-            Apartament* A = dynamic_cast<Apartament*>(this->locuinte[i]);
-
-            std::cout << "Chiria pentru apartamentul de pe pozitia " << i + 1 << ": " << A->CalculChirie(aplicareDiscount) << '\n';
-        }
-        else if (dynamic_cast<Casa*>(this->locuinte[i]))
-        {
-            Casa* C = dynamic_cast<Casa*>(this->locuinte[i]);
-            
-            std::cout << "Chiria pentru casa de pe pozitia " << i + 1 << ": " << C->CalculChirie(aplicareDiscount) << '\n';
-        }
+        std::cout << "Chiria pentru apartamentul de pe pozitia " << i + 1 << ": " << A->CalculChirie(aplicareDiscount) << '\n';
     }
-    catch(const std::out_of_range& err)
+    else if (dynamic_cast<Casa*>(this->locuinte[i]))
     {
-        std::cout << "Locuinta aleasa nu exista. Incearca din nou!\n";
+        Casa* C = dynamic_cast<Casa*>(this->locuinte[i]);
+
+        std::cout << "Chiria pentru casa de pe pozitia " << i + 1 << ": " << C->CalculChirie(aplicareDiscount) << '\n';
     }
 }

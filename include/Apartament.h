@@ -11,7 +11,7 @@ public:
     Apartament(const Apartament&);
     ~Apartament();
 
-    Apartament operator=(Apartament);
+    void operator=(const Apartament&);
 
     friend std::istream& operator>>(std::istream&, Apartament&);
     friend std::ostream& operator<<(std::ostream&, const Apartament&);

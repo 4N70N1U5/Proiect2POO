@@ -38,20 +38,18 @@ void Locuinta::setValStandard()
     std::cin.get();
 }
 
-Locuinta& Locuinta::operator=(Locuinta& L)
+void Locuinta::operator=(const Locuinta& L)
 {
     this->numeClient = L.numeClient;
     this->suprafataUtila = L.suprafataUtila;
     this->discount = L.discount;
-    
-    return *this;
 }
 
 std::istream& operator>>(std::istream& i, Locuinta& L)
 {
     std::cout << "Numele clientului: ";
     std::getline(i, L.numeClient);
-    std::cout << "Discountul aplicat: ";
+    std::cout << "Discountul aplicat (procent): ";
     i >> L.discount;
     std::cout << "Suprafata utila: ";
     i >> L.suprafataUtila;
@@ -62,7 +60,7 @@ std::istream& operator>>(std::istream& i, Locuinta& L)
 std::ostream& operator<<(std::ostream& o, const Locuinta& L)
 {
     o << "Numele clientului: " << L.numeClient << "\n";
-    o << "Discountul aplicat: " << L.discount << "\n";
+    o << "Discountul aplicat: " << L.discount << "%\n";
     o << "Suprafata utila: " << L.suprafataUtila << "\n";
 
     return o;

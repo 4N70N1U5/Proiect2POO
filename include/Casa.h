@@ -11,7 +11,7 @@ public:
     Casa(const Casa&);
     ~Casa();
 
-    Casa operator=(Casa);
+    void operator=(const Casa&);
 
     friend std::istream& operator>>(std::istream&, Casa&);
     friend std::ostream& operator<<(std::ostream&, const Casa&);

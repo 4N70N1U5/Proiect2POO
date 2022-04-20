@@ -17,7 +17,8 @@ void AfisareOptiuni()
     std::cout << "Optiunea 3: Afiseaza apartamentele.\n";
     std::cout << "Optiunea 4: Afiseaza casele.\n";
     std::cout << "Optiunea 5: Modifica o locuinta.\n";
-    std::cout << "Optiunea 6: Calculeaza si afiseaza chiria pentru o locuinta.\n";
+    std::cout << "Optiunea 6: Sterge o locuinta.\n";
+    std::cout << "Optiunea 7: Calculeaza si afiseaza chiria pentru o locuinta.\n";
     std::cout << "Optiunea 0: Inchide programul.\n";
     
     std::cout << "Optiunea aleasa: ";
@@ -103,7 +104,14 @@ int main()
             else if (input == "6")
             {
                 Clear();
-                std::cout << "Ai ales 6: Calculeaza si afiseaza chiria pentru o locuinta.\n\n";
+                std::cout << "Ai ales 6: Sterge o locuinta.\n\n";
+
+                AI.StergereLocuinta();
+            }
+            else if (input == "7")
+            {
+                Clear();
+                std::cout << "Ai ales 7: Calculeaza si afiseaza chiria pentru o locuinta.\n\n";
                 
                 AI.CalculChirie();
             }

@@ -24,14 +24,12 @@ Casa::~Casa()
     
 }
 
-Casa Casa::operator=(Casa C)
+void Casa::operator=(const Casa& C)
 {
-    Locuinta& L = C;
-    this->Locuinta::operator=(C);
+    const Locuinta& L = C;
+    this->Locuinta::operator=(L);
 
     this->suprafataCurte = C.suprafataCurte;
-
-    return *this;
 }
 
 std::istream& operator>>(std::istream& i, Casa& C)

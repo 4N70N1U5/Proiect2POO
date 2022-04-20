@@ -14,7 +14,7 @@ public:
 
     static void setValStandard();
 
-    Locuinta& operator=(Locuinta&);
+    void operator=(const Locuinta&);
     
     friend std::istream& operator>>(std::istream&, Locuinta&);
     friend std::ostream& operator<<(std::ostream&, const Locuinta&);
